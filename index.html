@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+		content="Analisi sul vero colore delle regioni.">
+	<meta name="keywords" content="COVID 19, coronavirus, zone, regioni, colori">
+
+	<title>Che colore?</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<link rel="stylesheet" href="jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
+	<script src="jquery.js"></script>
+	<script src="jquery-jvectormap-2.0.5.min.js"></script>
+	<script src="jquery-jvectormap-it_regions-mill.js"></script>
+	<style>
+		.text-big {
+			font-size: 130%;
+			font-weight: bold;
+			position: relative;
+			top: -5px;
+			margin-bottom: -4px;
+		}
+
+		.text-bigger {
+			font-size: 200%;
+			font-weight: bold;
+			position: relative;
+			top: -6px;
+			margin-bottom: -4px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container mt-2 pt-2 px-xl-5">
+		<h1>Che colore è effettivamente la mia regione?</h1>
+		<p>
+			La domanda non ha una risposta precisa.
+			Il governo decide il colore delle regioni in base ad una serie di parametri.
+			Questa pagina presenta <b>UNA STIMA</b> basata sull'effetivo numero dei casi settimanali ogni 100 mila abitanti.
+			Non esattamente quali sono i criteri, ma ho cercato di avvicinarmi il più possibile alla realtà.
+		</p>
+		<div id="map" style="width: 80%; height: 600px; margin: auto"></div>
+		<script>
+			var gdpData = {
+				"IT-23": 
+138.36236543660124,
+				"IT-21": 
+163.87484090919108,
+				"IT-25": 
+162.68096799214806,
+				"IT-52": 
+87.93369360781355,
+				"IT-36": 
+382.6843616731995,
+				"IT-42": 
+163.36290173436183,
+				"IT-45": 
+297.05749331503034,
+				"IT-57": 
+252.46715745383003,
+				"IT-32": 
+229.83038628969777,
+				"IT-55": 
+167.89919153264034,
+				"IT-67": 
+119.79395439843469,
+				"IT-34": 
+425.38295225811635,
+				"IT-65": 
+139.26446414481032,
+				"IT-62": 
+202.59916256927914,
+				"IT-75": 
+201.12285796314728,
+				"IT-77": 
+147.3102770156203,
+				"IT-78": 
+126.33901938113415,
+				"IT-82": 
+240.06777032750873,
+				"IT-72": 
+133.5225676247951,
+				"IT-88": 
+40.756549866777156,
+			};
+	$(function () {
+				
+				colors = {};
+				lung = Object.keys(gdpData).length;
+				for(i=0; i<lung; i++){
+					colors[Object.keys(gdpData)[i]] = "#ffffff";
+					if(gdpData[Object.keys(gdpData)[i]]>50){
+						colors[Object.keys(gdpData)[i]] = "#8dcf00";
+					}
+					if(gdpData[Object.keys(gdpData)[i]]>150){
+						colors[Object.keys(gdpData)[i]] = "#cfcc00";
+					}
+					if(gdpData[Object.keys(gdpData)[i]]>250){
+						colors[Object.keys(gdpData)[i]] = "#c40000";
+					}
+				}
+				console.log(colors);
+
+				$('#map').vectorMap({
+					map: 'it_regions_mill',
+					series: {
+						regions: [{
+							values: colors
+						}]
+				},
+					onRegionTipShow: function (e, el, code) {
+						el.html(el.html() + ' (Casi ogni 100K abitanti - ' + gdpData[code] + ')');
+					}
+				});
+			})
+			
+		</script>
+
+		<h3 class="mt-2">Frequently Asked Questions</h3>
+		<p>
+			<b><i>Il progetto è open-source?</i></b> <br />
+			Sì! Oltre ad essere open-source, è anche <b>software libero</b>.
+			Puoi accedere al codice e leggere i dettagli della licenza sulla
+			<a href="https://github.com/lollo03/che-colore">pagina GitHub dedicata</a>.
+		</p>
+		<p>
+			<b><i>Da dove prendi i dati?</i></b> <br />
+			Dal <a href="https://github.com/italia/covid19-opendata-vaccini/">dataset ufficiale</a> del
+			Dipartimento per la Trasformazione Digitale e dell'Agenzia per l'Italia Digitale, che ringrazio molto
+			per il loro contributo.
+		</p>
+		<p>
+			<b><i>Questo sito è simile a <a href="https://quanto-manca.it/">quanto manca!</a>?</i></b> <br />
+			Hai ragione! Molto del codice, ed il metodo di funzionamento stesso è derivato dal progetto qunto manca.
+		</p>
+		<p>
+			<b><i>Come funziona, a livello tecnico?</i></b> <br />
+			Il funzionamento è semplice. Ad ogni commit, manualmente o ogni giorno all'01:00 di notte (UTC), viene
+			attivata una GitHub Action che scarica l'ultimo dataset ed esegue lo script che aggiorna la pagina e
+			genera i grafici. Viene quindi fatto un commit sul branch <code>gh-pages</code> dove risiedono i sorgenti
+			computati della pagina, serviti da GitHub Pages.
+			Tutta l'infrastruttura è quindi completamente serverless e automaticamente gestita da GitHub. <br />
+			Lo script è scritto in Python ed utilizza le librerie di analisi numerica numpy, pandas e la libreria
+			per grafici matplotlib. Per la pagina utilizzo Bootstrap e del CSS scritto male; sicuramente questo sarà
+			oggetto di miglioramento in futuro.
+		</p>
+	</div>
+	<div class="container-fluid mt-2 pb-4">
+		<hr />
+		<div class="container pt-2 px-xl-5">
+			Creato con &hearts; da Lorenzo Andreasi</a>
+			(<a href="https://github.com/lollo03">GitHub</a>,
+			<a href="https://t.me/lollo0">Telegram</a>). <br />
+			<span class="text-muted">Copyleft &#127279; Lorenzo Andreasi, 2021. <i>Some rights reserved.</i></span> <br />
+		</div>
+	</div>
+
+</body>
+
+</html>
