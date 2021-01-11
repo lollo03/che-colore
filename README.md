@@ -1,3 +1,5 @@
+![Update data and webpage](https://github.com/lollo03/che-colore/workflows/Update%20data%20and%20webpage/badge.svg)
+
 # Che colore è la mia ragione?
 La domanda non ha una risposta precisa. Il governo decide il colore delle regioni in base ad una serie di parametri. Questa pagina presenta **UNA STIMA** basata sull'effetivo numero dei casi settimanali ogno 100 mila abitanti. Non esattamente quali sono i criteri, ma ho cercato di avvicinarmi il più possibile alla realtà.
 
