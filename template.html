@@ -137,13 +137,13 @@
 		</p>
 		<p>
 			<b><i>Come funziona, a livello tecnico?</i></b> <br />
-			Il funzionamento è semplice. Ad ogni commit, manualmente o ogni giorno all'01:00 di notte (UTC), viene
-			attivata una GitHub Action che scarica l'ultimo dataset ed esegue lo script che aggiorna la pagina e
-			genera i grafici. Viene quindi fatto un commit sul branch <code>gh-pages</code> dove risiedono i sorgenti
+			Il funzionamento è semplice. Ogni tanto viene
+			attivata una GitHub Action che scarica l'ultimo dataset ed esegue lo script che aggiorna la pagina e genera l'infografica,
+			Viene quindi fatto un commit sul branch <code>gh-pages</code> dove risiedono i sorgenti
 			computati della pagina, serviti da GitHub Pages.
 			Tutta l'infrastruttura è quindi completamente serverless e automaticamente gestita da GitHub. <br />
-			Lo script è scritto in Python ed utilizza le librerie di analisi numerica numpy, pandas e la libreria
-			per grafici matplotlib. Per la pagina utilizzo Bootstrap e del CSS scritto male; sicuramente questo sarà
+			Lo script è scritto in Python ed utilizza le libreria di analisi pandas. 
+			Per la pagina utilizzo Bootstrap e del CSS scritto da Marco Aceti; sicuramente questo sarà
 			oggetto di miglioramento in futuro.
 		</p>
 	</div>
