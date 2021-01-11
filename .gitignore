@@ -144,3 +144,5 @@ config.py
 *.xml
 
 index.html
+
+.vscode
