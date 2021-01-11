@@ -31,7 +31,7 @@ jobs:
     - name: Evil Git branches hack
       run: |
         git fetch origin gh-pages
-        mv index.html plot.png ..
+        mv index.html ..
         git switch gh-pages
         mv ../index.html .
       
