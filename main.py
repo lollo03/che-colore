@@ -24,7 +24,7 @@ for regione in regioni:
         x = (df[df['data'].str.contains(giorno)])
         y = int(x[x['denominazione_regione'].str.contains(regione)].nuovi_positivi)
         dati[j] = dati[j] + y
-    dati[j] = dati[j] / (abitanti[j]/100000)
+    dati[j] = round((dati[j] / (abitanti[j]/100000)), 1)
     j+=1
 
 #print(dati)
