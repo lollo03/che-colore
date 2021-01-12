@@ -13,7 +13,7 @@ df = pd.read_csv(
 )
 
 giorni = []
-for i in range(0,7):
+for i in range(1,8):
     giorni.append(str(date.today() - timedelta(days = i)))
 
 dati = []
