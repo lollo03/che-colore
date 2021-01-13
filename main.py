@@ -1,7 +1,8 @@
 import io
 import pandas as pd
 import requests
-from datetime import date, timedelta, datetime
+from datetime import datetime, timedelta, date
+from pytz import timezone
 
 regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna", "Friuli Venezia Giulia", "Lazio", "Liguria", "Lombardia", "Marche", "Molise", "P.A. Bolzano", "P.A. Trento", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "Umbria", "Valle d'Aosta", "Veneto"]
 abitanti = [1293941, 553254, 1894110, 5712143, 4464119, 1206216, 5755700, 1524826, 10027602, 1512672, 300516, 520891, 538223 ,4311217, 3953305, 4875290,4875290 ,3692555,870165,125034,4879133]
@@ -44,5 +45,5 @@ with open("template.html", "r+") as f:
                         line = f"{dati[j]},"
                     j+=1
             if "<!-- data_ora -->" in line:
-                line = f"{datetime.now().strftime('%d/%m/%Y alle %H:%M')}"
+                line = f"{datetime.now(timezone('Europe/rome')).strftime('%d/%m/%Y alle %H:%M')}"
             wf.write("\n" + line)
