@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, date
 from pytz import timezone
 
 regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna", "Friuli Venezia Giulia", "Lazio", "Liguria", "Lombardia", "Marche", "Molise", "P.A. Bolzano", "P.A. Trento", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "Umbria", "Valle d'Aosta", "Veneto"]
-abitanti = [1293941, 553254, 1894110, 5712143, 4464119, 1206216, 5755700, 1524826, 10027602, 1512672, 300516, 520891, 538223 ,4311217, 3953305, 4875290,4875290 ,3692555,870165,125034,4879133]
+abitanti = [1305770, 556934, 1924701, 5785861, 4467118, 1211357, 5865544, 1543127, 10103969, 1518400, 302265, 532080, 542739 ,4341375, 4008296, 1630474, 4968410 ,3722729,880285,125501,4907704]
 DATA_URL = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
 
 r = requests.get(DATA_URL)
