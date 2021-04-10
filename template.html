@@ -117,13 +117,13 @@
 				lung = Object.keys(gdpData).length;
 				for(i=0; i<lung; i++){
 					colors[Object.keys(gdpData)[i]] = "#d1d1d1";
-					if(gdpData[Object.keys(gdpData)[i]]>50){
+					if(gdpData[Object.keys(gdpData)[i]]>0){
 						colors[Object.keys(gdpData)[i]] = "#f0ec00";
 					}
-					if(gdpData[Object.keys(gdpData)[i]]>150){
+					if(gdpData[Object.keys(gdpData)[i]]>100){
 						colors[Object.keys(gdpData)[i]] = "#f09000";
 					}
-					if(gdpData[Object.keys(gdpData)[i]]>250){
+					if(gdpData[Object.keys(gdpData)[i]]>150){
 						colors[Object.keys(gdpData)[i]] = "#c40000";
 					}
 				}
