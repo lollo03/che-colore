@@ -84,7 +84,7 @@
 				"IT-42": 
 99.6,
 				"IT-45": 
-1115.9,
+111.8,
 				"IT-57": 
 112.5,
 				"IT-32": 
@@ -118,10 +118,10 @@
 				lung = Object.keys(gdpData).length;
 				for(i=0; i<lung; i++){
 					colors[Object.keys(gdpData)[i]] = "#d1d1d1";
-					if(gdpData[Object.keys(gdpData)[i]]>0){
+					if(gdpData[Object.keys(gdpData)[i]]>50){
 						colors[Object.keys(gdpData)[i]] = "#f0ec00";
 					}
-					if(gdpData[Object.keys(gdpData)[i]]>100){
+					if(gdpData[Object.keys(gdpData)[i]]>150){
 						colors[Object.keys(gdpData)[i]] = "#f09000";
 					}
 					if(gdpData[Object.keys(gdpData)[i]]>180){
@@ -147,7 +147,7 @@
 		</script>
 
 		<p class="text-muted">Dati aggiornati il 
-19/11/2021 alle 15:42
+19/11/2021 alle 15:46
 		</p>
 
 		<h3 class="mt-2">Frequently Asked Questions</h3>
