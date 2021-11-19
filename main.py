@@ -6,7 +6,7 @@ from pytz import timezone
 
 regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna", "Friuli Venezia Giulia", "Lazio", "Liguria", "Lombardia",
            "Marche", "Molise", "P.A. Bolzano", "P.A. Trento", "Piemonte", "Puglia", "Sardegna", "Sicilia", "Toscana", "Umbria", "Valle d'Aosta", "Veneto"]
-abitanti = [1285256, 547579, 1877728, 5679759, 445549, 1198753, 5720796, 1509805, 9966992, 1501406,
+abitanti = [1285256, 547579, 1877728, 5679759, 4445549, 1198753, 5720796, 1509805, 9966992, 1501406,
             296547, 533715, 544745, 4273210, 3926931, 1598225, 4840876, 3668333, 865013, 123895, 4852453]
 DATA_URL = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
 
